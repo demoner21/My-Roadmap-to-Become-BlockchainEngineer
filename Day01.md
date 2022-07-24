@@ -137,8 +137,59 @@ Sempre que queremos fazer uma mudança de estado no blockchain, temos que pagar 
 * [Visibilidade](https://docs.soliditylang.org/en/v0.7.3/contracts.html#visibility-and-getters)
     - Public , Internal, private , External Visibility
 
-Se adicionarmos public à nossa variavel age, recompilamos, excluímos nosso contrato anterior e reimplantamos, e podemos ver os botões aparecerem.
+Se adicionarmos `public` à nossa variavel age, recompilamos, excluímos nosso contrato anterior e reimplantamos, e podemos ver os botões aparecerem.
 
 ![public](Assets/public.png)
 &nbsp;
+
 ![publicDeploy](Assets/publicDeploy.png)
+
+Essa `public` define a visibilidade da nossa variavel ou função, existem diferentes tipos de visibilidades.
+
+* External;
+Uma função External significa que não pode ser chamada pelo mesmo contrato. Tem que ser coberto por um contrato externo.
+
+* Public:
+Funções públicas podem ser chamadas por qualquer pessoa, incluindo variáveis. Curiosamente, as variáveis ​​são uma chamada de função para apenas olhar para elas e retornar o que quer que seja essa variável.
+
+* Internal:
+As funções internas só podem ser chamadas por outras funções dentro do contrato existente ou em seus contratos derivados.
+
+* Private:
+Privado é o mais restritivo, pois funções privadas e variáveis ​​de estado são visíveis apenas para contratos em que são definidos e não para contratos derivados.
+
+* A razão pela qual não vimos a idade em nossa implantação de contrato original é que, se não dermos visibilidade a uma variável de estado, ela será definida automaticamente como "Internal".
+
+# Modificando as Variaveis
+
+Se apertarmos o botão age, ele mostra que o valor de age é 0. A função store é configurada de forma que qualquer valor (número inteiro) que passarmos, mudará age para o valor que passamos.
+
+Se passarmos 30, chegarmos à loja, essa transação passará, e depois a idade, veremos que o valor agora é 30.
+
+Isso ocorre porque em um blockchain, sempre que você chama uma função ou qualquer outra coisa, você faz alguma mudança de estado no blockchain, na verdade você também está fazendo uma transação. É isso que torna tudo isso poderoso e, novamente, é por isso que fazer uma chamada de função ou implantar um contrato custa um pouco de gas.
+
+# Scopo
+
+A razão pela qual podemos acessar essa variável age dentro da função store é porque age tem esse escopo global ou de contrato. Se fizermos uma variável dentro de uma função de armazenamento, não poderemos acessá-la fora de uma função de armazenamento porque ela é independente dentro dos colchetes{}.
+
+# Funções View
+Você também pode fazer uma função chamada retrieve e torná-la uma função pública que é do tipo view e retorna uint256. Tudo isso vai fazer é retornar o número que foi armazenado.
+
+![public View](Assets/publicView.png)
+![retrive](Assets/retrieve.png)
+
+Uma função de visualização significa que queremos ler algum estado do blockchain. Estamos apenas lendo o blockchain. Se estamos lendo a blockchain e não estamos fazendo uma mudança no seu estado, não precisamos uma transação. Por isso os botões são azuis porque são funções de visualização. Variáveis ​​públicas também possuem funções de visualização. É por isso que ambos são dessa cor. A variável idade é tecnicamente uma função de visualização. Quando clico nele, consigo visualizar o estado da variável.
+
+# Funções Pure
+
+Fuções pure são funçoes que puramente fazer algum tipo de matemática.
+
+![pureView](Assets/pureView.png)
+
+# Structs
+
+Structs nos permite criar atraves da nossa lista ou grupo aquilo que queremos armazenar, ao invésw de armazenamos um unica vez, podemos atribuir diferentes dados diferentes quase como criar um novo objeto.
+
+![struct](Assets/structs.png)
+
+Agora nós temos um novo tipo de pessoa é uma idade dentro da nossa estrutura, quando fizermos o deploy dela através do botão retrieve ele irá retornar com o nome é a age do nosso pilot.
