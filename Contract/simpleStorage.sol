@@ -4,29 +4,29 @@ pragma solidity ^0.8.8;
 // pragma solidity ^0.8.0;
 // pragma solidity >=0.8.0 <0.9.0;
 
-contract SimpleStorage {
+contract Human {
 
-    uint256 favoriteNumber;
+    uint256 age;
 
-    struct People {
-        uint256 favoriteNumber;
+    struct Pilot {
+        uint256 age;
         string name;
     }
     // uint256[] public anArray;
-    People[] public people;
+    Pilot[] public pilot;
 
-    mapping(string => uint256) public nameToFavoriteNumber;
+    mapping(string => uint256) public personAge;
 
-    function store(uint256 _favoriteNumber) public virtual {
-        favoriteNumber = _favoriteNumber;
+    function store(uint256 _age) public virtual {
+        age = _age;
     }
 
     function retrieve() public view returns (uint256){
-        return favoriteNumber;
+        return age;
     }
 
-    function addPerson(string memory _name, uint256 _favoriteNumber) public {
-        people.push(People(_favoriteNumber, _name));
-        nameToFavoriteNumber[_name] = _favoriteNumber;
+    function add(string memory _name, uint256 _age) public {
+        pilot.push(Pilot(_age, _name));
+        personAge[_name] = _age;
     }
 }
