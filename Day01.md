@@ -172,13 +172,13 @@ Isso ocorre porque em um blockchain, sempre que você chama uma função ou qual
 
 A razão pela qual podemos acessar essa variável age dentro da função store é porque age tem esse escopo global ou de contrato. Se fizermos uma variável dentro de uma função de armazenamento, não poderemos acessá-la fora de uma função de armazenamento porque ela é independente dentro dos colchetes{}.
 
-# Funções View
+# Funções View && Pure
 Você também pode fazer uma função chamada retrieve e torná-la uma função pública que é do tipo view e retorna uint256. Tudo isso vai fazer é retornar o número que foi armazenado.
 
 ![public View](Assets/publicView.png)
 ![retrive](Assets/retrieve.png)
 
-Uma função de visualização significa que queremos ler algum estado do blockchain. Estamos apenas lendo o blockchain. Se estamos lendo a blockchain e não estamos fazendo uma mudança no seu estado, não precisamos uma transação. Por isso os botões são azuis porque são funções de visualização. Variáveis ​​públicas também possuem funções de visualização. É por isso que ambos são dessa cor. A variável idade é tecnicamente uma função de visualização. Quando clico nele, consigo visualizar o estado da variável.
+Uma função de visualização tanto `pure` é `view` qiamdp utilizadas sozinhas não custam gas , significa que quando queremos ler algum estado do blockchain. Se estamos apenas lendo a blockchain e não estamos fazendo uma mudança no seu estado, não precisamos realizar uma transação isso não custará gas. Por isso os botões são azuis porque são funções de visualização. Variáveis ​​públicas também possuem funções de visualização. É por isso que ambos são dessa cor. A variável idade é tecnicamente uma função de visualização. Quando clico nele, consigo visualizar o estado da variável.
 
 # Funções Pure
 
@@ -193,3 +193,39 @@ Structs nos permite criar atraves da nossa lista ou grupo aquilo que queremos ar
 ![struct](Assets/structs.png)
 
 Agora nós temos um novo tipo de pessoa é uma idade dentro da nossa estrutura, quando fizermos o deploy dela através do botão retrieve ele irá retornar com o nome é a age do nosso pilot.
+
+# Storage && Arrays && Arrays Dinamamicos
+
+Armazenar variaveis em Solidity sempre funciona apartir do índice 0, em vez de apenas criar uma pessoa, queremos apenas criar uma lista inteira em nosso contrato. Então, como criamos uma lista ?
+
+um array é uma maneira de armazenar uma lista ou um grupo de objetos.
+
+![dinamicArray](Assets/dinamicArray.png)
+
+No Array acima criamos um arrau dinamico, é todo o objeto sera criado apartir do 1.
+
+# Adicionando Atráves do Array
+
+Vamos agora adicionar um Piloto ao nosso array.
+
+![addPilot](Assets/addPilot.png)
+
+A função abaixo addPilot onde passamo uma `string memory _name` é `uint256 _age`, agora podemos criar varios objetos chamados `Humans` através do `pilot.push`.
+
+# Memory & Storage
+
+Em Solidity, temos mais ou menos duas formas de armazenar informações, através da `memory` ou `storage`.
+`memory` são variaveis temporárias, e são apagagas entre as chamadas externas do seu contrato.
+`storage` refere-se as variáveis guardadas permanentemente na Blockchain.
+
+Imagine o seu computador enquando o seu disco rígido guarda todas as suas informações a memória RAM guarda durante aquele curto periodo de tempo.
+
+# Mapping
+
+`mapping` imagine como um dicionario é essencialmente um armazenamento de chave-valor para guardar e buscar dados.
+
+# EVM
+
+Todo o código que criamos acima foi copilado para uma EVM, conhecido como "Ethereum Virtual Machine", o que nós permite rodar todo o nosso código tanto em uma rede teste como implementar ele na rede principal.
+
+
