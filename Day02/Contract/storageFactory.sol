@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.7.0;
+pragma solidity ^0.8.8;
 
 import "./SimpleStorage.sol";
 
 contract StorageFactory is SimpleStorage {
-    
+
     SimpleStorage[] public SSArray;
 
     function createSSContract() public {
