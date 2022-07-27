@@ -155,3 +155,21 @@ Para que a função seja override (substituível), precisamos adicionar uma pala
 
 ![fix-it](Assets/vc.png)
 ![fix-it2](Assets/ovr.png)
+
+Deploy
+
+![deployTest](Assets/extraDeploy.png)
+
+
+#### Recap
+
+- Aprendemos como importar pedaços de outros contratos aos nossos, isso será muito importanto quando fizermos o importe de alguns protocolos do OpenZeppelin como o ERC-20
+
+
+- Aprendemos como trabalha Herança.
+
+
+- Aprendemos como fazer deploy de um contrato para outro contrato
+
+
+- Aprendemos como interagir com contratos diferentes  contratos do nosso contrato, falaremos mais disso quando virmos ataque a contratos.
