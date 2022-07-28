@@ -182,6 +182,3 @@ o que o `remix` está fazendo ao usarmos o npm é importar do github através do
 ### Interface
 
 ![interface](Assets/v3.png)
-
-
-
