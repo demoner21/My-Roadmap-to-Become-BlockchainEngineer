@@ -4,7 +4,7 @@ O mesmo que antes, vamos criar um arquivo .sol. Vamos chamá-lo de FundMe.sol e 
 
 Chmaremos nosso contrato "FundMe"
 
-![Fundme](Assets/)
+![Fundme](Assets/Fundme.png)
 
 ### Proposito desse contrato
 
@@ -12,7 +12,7 @@ Nós queremos que esse contrato seja capaz de aceitar uma quantidade de pagament
 
 ### Payable function && Gas
 
-![Payable]()
+![Payable](Assets/payPublic.png)
 
 Quando definimos nossa função como `payable` significa que ela sera usada para pagar por coisas.
 Cada chamada de função tem um valor associado.
@@ -21,21 +21,21 @@ Esse valor é quanto de `wei`, `gwei`, `finney` ou `ether` você irá enviar com
 
 `wei`, `gwei`, `ether` são apenas maneiras diferentes de falarmos sobre quanto de `ether` você vai enviar. Vemos a quantidade de `gwei` que equivale a `1 eth`
 
-![calculator]()
+![calculator](Assets/e3.png)
 
 - 1 `wei` é a menor quantidade de `Ethereum`, que você pode fracionar, nada será menor que 1 `wei`, por isso que quando falamos sobre quando que algo custa, sempre falamos por padrão em `wei`.
 
-![fundDeploy]()
+![fundDeploy](Assets/fund.png)
 
 O botão está em vermelho pois ele é uma função payable, se clicarmos no botão, podemos associar um valor.
 
-![valueAssociete]()
+![valueAssociete](Assets/sendValue.png)
 
 Então, o que queremos fazer com esse nosso contrato, ou melhor o que podemos fazer com ele quando as pessoas enviarem algo ?
 
 Iniciamente vamos acompanhar quem nos enviou, portanto iremos criar uma mapping entre valor é endereço(addresses).
 
-![mappingAddress]()
+![mappingAddress](Assets/sendValue.png)
 
 ### Mapping, msg.sender, msg.value
 
@@ -47,7 +47,7 @@ Então sempre que chamamos a função `fund`, alguém pode enviar algum valor po
 
 Vamos salvar no nosso mapping `addressAmountFunded`.
 
-![addressAmountFunded]()
+![addressAmountFunded](Assets/msg.png)
 
 ### Financiando
 
