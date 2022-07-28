@@ -140,3 +140,48 @@ Além disso, eles estão sendo usados por alguns dos principais protocolos do si
 um exemplo de uma solução descentralizada pronta para uso que já foi empacotada de maneira descentralizada para você consumir e usar. Isso torna a produção mil vezes mais fácil do que construir tudo sozinho.
 
 ## Chainlink Código documentação ETH/USD
+
+No entanto, se você quiser fazer uma chamada de API é constuir a sua própria rede descentralizada pode com as chamas de API da `chainlink`.
+
+Mas vamos abordar o uso `pricefeeds`, `chainlink VRF`, `keepernetwork` e demais serviços descentralizados que tornama entrada na mainnet muito mais fácil.
+
+Você sempre pode fazer uma chamada http do chainlink também. Não vamos passar por cima disso porque colocar isso em produção é um pouco mais complicado.
+
+Se você quiser experimentá-los sozinhos, pode ir [aqui](https://docs.chain.link/docs/get-the-latest-price/) e clicar em "abrir no remix". Isso nos levará a remixar a edição com todo o código escrito para nós. Vamos em frente e compilá-lo e implantá-lo para real network(Injected Web3 in Environment).
+
+O código é na verdade para [rede Koven]. Então mude sua metamask para Koven. Pegue a rede Koven se você não tiver nenhuma. Vamos implantar o contrato, a metamask vai aparecer e podemos obter o preço mais recente ao clicar no botão.
+
+Podemos ver que a função realmente retorna o preço mais recente do ethereum. Você pode estar se perguntando "Por que esse número parece tão grande?" Lembre-se de como falamos sobre wei, gwei e ether.
+
+A razão pela qual eles não existem em Solidity, Na verdade temos que retornar um vallor que é multiplicado por 10 para algum número.
+
+Se obtivermos um valor de 261497384316, esse valor é na verdade 2614,97384316 * 10⁸.
+
+Utilizamos a rede teste ao invés da rede local por conta da Chainlink VMs Javascript. aprendemos mais tarde como essas interações, retornamos dados para nossa blockchain, vamos ao contrato para implementarmos essa função do preço mais recente.
+
+### LatestRoundData = ultima rodada de dados
+
+Outro contrato chamado neste caso chamado priceFeed tem uma função chamada lastRoundData que retorna muitos dados.
+
+![latestRoundData](Assets/latestRoundData.png)
+
+Ele retorna um roundID que define quantas vezes esse priceFeed foi atualizado, retorna o preço que é a conversão real entre dois ativos, retorna um startedAt que define quando foi a última atualização, retorna um timestamp e retorna um AnswerInRound,não se preocupe sobre answerInRound por enquanto.
+
+
+
+Se você quiser se aprofundar no que essas `rounds` significam e o que significa AnswerInRound, você pode definitivamente conferir o [Chainlink documentation](https://docs.chain.link/).
+
+### Importando código do Datafeed através do NPM
+
+primeira coisa que iremos precisar fazer é importar o código do chainlink [@chainlink/contracts](https://www.npmjs.com/package/@chainlink/contracts), como sabemos ao importar `@chainlink/contracts`, na verdade estamos importando do pacote npm, mas, também podemos fazer isso através do repositório [chainlink repositório](https://github.com/smartcontractkit/chainlink.git)
+
+![import](Assets/import.png)
+
+o que o `remix` está fazendo ao usarmos o npm é importar do github através do package e intalar para nós podermos trabalhar.
+
+### Interface
+
+![interface](Assets/v3.png)
+
+
+
