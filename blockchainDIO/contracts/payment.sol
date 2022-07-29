@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 
+// this away we can work with version equal or greater than 0.4.2 and less than 0.9.0
 pragma solidity >=0.4.2 <0.9.0;
 
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
