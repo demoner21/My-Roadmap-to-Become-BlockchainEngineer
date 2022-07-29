@@ -182,3 +182,64 @@ o que o `remix` está fazendo ao usarmos o npm é importar do github através do
 ### Interface
 
 ![interface](Assets/v3.png)
+
+Esse tipo de contrato não começam com a palavra-chave contract, mas começam com a palavra-chave interface.
+A principal diferença é que você pode ver que suas funções não estão completas. Elas apenas têm o nome da função e seu tipo de retorno.
+
+Em nosso código aqui, o Solidity não entende nativamente como interagir com outro contrato. Temos que dizer ao nosso contrato quais funções podem ser chamadas de outro contrato, è aqui que as interfaces realmente entram no jogo, semelhante à estrutura do que podemos fazer com as interfaces é similar as `structs`.
+
+### ABI/Application Binary Interface
+
+Interfaces compilam para a ABI, ela diz a Solidity quais funções podem ser chmadas em outro contrato, precisamos saber quais funções usar e com quais funções ele pode chamar outros contratos.
+
+Sempre qe você interagir com outro contrato em SOlidity ou qualquer contrato inteligente em geral iŕa precisar dessa ABI de contratos.
+
+### interagindo com a iterface de um contrato
+
+Assim como `structs` é `variable` vamos definir uma função chamata `getVersion` é dentro dela chamaremos a interface do nosso contrato.
+
+![getVersion](Assets/version.png)
+
+definimos a interface do outro contrato é retornamos inicializamod a nossa variable dando o nome a ela, chamaremos ela de `priceNow`
+
+![Interface](Assets/getversion.png)
+
+Primeiro coisa que nomeamos é o tipo da AVI, já que estamos dentro de um contrato, vamos pular a visibilidade e dar um nome para inicializarmos ela, com ela inicializada escolhemos onde interagir com a AVI do contrato é passamos o endereço que está localizado o contrato.
+
+### Encontrandoo Pricefeed Address
+
+Para encontrarmos o preço que irá alimentar a nossa aplicação ETH/USD, podemos olha a documentação da chainlink em [ethereum price feeds](https://docs.chain.link/docs/ethereum-addresses/).
+
+lá encontraremos diferentes `address` relacionados a cada rede é um endereço de contrato diferente com as informações necessarias para obter o preço.
+
+### Getprice  function
+
+Temos uma função getPrice que se olharmos para a nossa interface podemos ver que a outras funções dentro, vamos retornar a resposta da função price.
+
+![tuples](Assets/tuples.png
+)
+Uma `Tuple` é uma lista de objetos de tipos potencialmente diferentes cujo o número é uma constante em tempo de compilação, podeos definir varias variaveis dentro de `tuples`
+
+### Limpando as variaveis `Tuple` sem uso && Deploy
+
+Podemos retornar espações em branco para cada uma das seções não utilizadas com virgulas entre si.
+
+![clean](Assets/clean.png)
+
+### Wei/Gwei (Correnspondencia)
+
+Vimos que getPrice possui 8 casas decimais, no entando, a menor unidade de medida tem 18, então normalmente vamos fazer tudo ter 18 decimais também, precisamos fazer isso é economiza gas, se não fizermos, podemos declarar
+
+`return uint256(price * 10000000000);`
+
+ou
+
+`return uint256(price * 1e10);`
+
+obtendo assim o preço e a taxa de converção, assim da mesmo forma podemos usar para definir o valor minimo do financiamento do nosso contrato.
+
+através de uma função que converta o valor que vai ser enviado em USD.
+
+![convert](Assets/convert.png)
+
+Assim retornamos com o valor convertido, por conta das casas decimais.
