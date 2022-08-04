@@ -18,9 +18,13 @@ Já que estamos no tópico de matemática, vamos falar brevemente sobre algumas 
 Antes do Solidity 0.8, se você adicionasse ao tamanho máximo, um número uint poderia ser agrupado ao redor do número mais baixo que seria. Por exemplo:
 
 ![safeMath](./Assets/tester.png)
+
+
 ![safeMath](./Assets/255.png)
 ![safeMath](./Assets/1.png)
-se adicionarmos dois números uint8 : 255 + uint8(1) = 0 255 + uint(100) = 99
+
+
+se adicionarmos dois números uint8 : 255 + uint8(1) = 0 255 + uint(1) = 1
 
 Isso ocorre porque o número inteiro pode realmente se enrolar quando atingir seu limite máximo. Eles basicamente são redefinidos.
 
